@@ -1,5 +1,7 @@
 #pragma once
 
+// vertical sync
+
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Network.hpp>
@@ -13,6 +15,7 @@
 #include <cstdlib>
 
 #include "Settings.h"
+#include "ImGuiController.h"
 
 struct dataSprite
 {
@@ -21,7 +24,7 @@ struct dataSprite
 //	dataSprite operator=(dataSprite &other);
 };
 
-class App : protected Settings
+class App : protected Settings, private ImGuiController
 {
 private:
 	// Window

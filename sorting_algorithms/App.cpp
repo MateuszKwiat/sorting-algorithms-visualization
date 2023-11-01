@@ -55,29 +55,32 @@ void App::initializeWindow()
 {
 	this->videoMode = sf::VideoMode::getDesktopMode();
 	this->window = new sf::RenderWindow(this->videoMode,
-		"sorting algorithms", sf::Style::Fullscreen);
+		"sorting algorithms", sf::Style::Default);
 	this->window->setFramerateLimit(60);
 }
 
 void App::windowUpdateAndDisplay()
 {
 //	this->pollEvents();
+	ImGuiController::update(*this->window);
 
 	this->window->clear();
 
 	for (auto& x : this->dataVector)
 		this->window->draw(x.shape);
-
+	
+	ImGuiController::render(*this->window);
 	this->window->display();
 }
 
 //										Constructor and destructor
 App::App(int animationSpeed, int amountOfData, int sortChoice) 
-	: Settings()
+	: Settings(), ImGuiController()
 {
 	this->sortChoice = sortChoice;
 
 	this->initializeWindow();
+	ImGuiController::initialize(*this->window);
 	Settings::setSettings(animationSpeed, amountOfData, this->window->getSize().x);
 	this->initializeVariables();
 	this->initializeVector();
@@ -86,6 +89,7 @@ App::App(int animationSpeed, int amountOfData, int sortChoice)
 
 App::~App()
 {
+	ImGuiController::~ImGuiController();
 	delete this->window;
 }
 
@@ -102,6 +106,7 @@ void App::pollEvents()
 {
 	while (this->window->pollEvent(this->event))
 	{
+		ImGuiController::eventProcessing(this->event);
 		switch (this->event.type)
 		{
 		case sf::Event::Closed:
