@@ -12,7 +12,7 @@ void App::initializeVariables()
 	else
 		this->dataSizeX = (this->window->getSize().x / static_cast<float>(Settings::amountOfData));
 
-	this->sorted = false;
+	this->sorted = true;
 	this->isRunning = true;
 }
 
@@ -62,14 +62,14 @@ void App::initializeWindow()
 void App::windowUpdateAndDisplay()
 {
 //	this->pollEvents();
-	ImGuiController::update(*this->window);
 
 	this->window->clear();
 
 	for (auto& x : this->dataVector)
 		this->window->draw(x.shape);
 	
-	ImGuiController::render(*this->window);
+	ImGuiController::update(*this->window);
+	ImGuiController::render(*this->window, this->sorted);
 	this->window->display();
 }
 
@@ -128,7 +128,6 @@ void App::render()
 {
 
 	this->pollEvents();
-
 	if (!this->sorted)
 	{
 		auto pickedSortingFunction = sortingFunctionsMap[sortChoice];

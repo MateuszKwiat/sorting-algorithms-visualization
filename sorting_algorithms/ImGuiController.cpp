@@ -7,18 +7,18 @@ ImGuiController::~ImGuiController() {
 	ImGui::SFML::Shutdown();
 }
 
-void ImGuiController::menu() {
+void ImGuiController::menu(bool& start) {
 	int a = 0;
 	int b = 0;
 	ImGui::Begin("Data and sorting settings");
 	ImGui::RadioButton("Sort1", 0);
 	ImGui::RadioButton("Sort2", 0);
 	ImGui::RadioButton("Sort3", 0);
-	ImGui::RadioButton("Sort4", 0);
 	ImGui::SliderInt("Data Size", &a, 1, 1820);
 	ImGui::SliderInt("Animation speed", &b, 1, 20);
 	ImGui::Button("Apply");
-	ImGui::Button("Start");
+	if (ImGui::Button("Start"))
+		start = false;
 	ImGui::End();
 }
 
@@ -34,7 +34,7 @@ void ImGuiController::update(sf::RenderWindow& window) {
 	ImGui::SFML::Update(window, this->deltaClock.restart());
 }
 
-void ImGuiController::render(sf::RenderWindow& window) {
-	this->menu();
+void ImGuiController::render(sf::RenderWindow& window, bool& start) {
+	this->menu(start);
 	ImGui::SFML::Render(window);
 }
