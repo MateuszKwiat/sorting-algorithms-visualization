@@ -69,7 +69,7 @@ void App::windowUpdateAndDisplay()
 		this->window->draw(x.shape);
 	
 	ImGuiController::update(*this->window);
-	ImGuiController::render(*this->window, this->sorted);
+	ImGuiController::render(*this->window, this->sorted, &sortChoice);
 	this->window->display();
 }
 
@@ -133,9 +133,15 @@ void App::render()
 		auto pickedSortingFunction = sortingFunctionsMap[sortChoice];
 		pickedSortingFunction(0, dataVector.size() - 1);
 		this->checkIfSorted();
+
+		this->vectorCoordinatesX = 0.f;
+		this->dataVector.clear();
+		this->initializeVector();
+		this->sorted = true;
 	}
-	else
+	else {
 		this->windowUpdateAndDisplay();
+	}
 }
 
 //										Debug methods

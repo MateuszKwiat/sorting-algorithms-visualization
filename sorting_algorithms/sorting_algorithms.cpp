@@ -5,8 +5,8 @@ int main()
 	srand(time(0));
 
 
-	int x = 1000;
-	int y = 3;
+	int x = 500;
+	int y = 5;
 	int z = 1;
 
 	//std::cout << "how many shapes: ";
