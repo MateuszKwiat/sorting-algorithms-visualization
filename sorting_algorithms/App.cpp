@@ -69,7 +69,8 @@ void App::windowUpdateAndDisplay()
 		this->window->draw(x.shape);
 	
 	ImGuiController::update(*this->window);
-	ImGuiController::render(*this->window, this->sorted, &sortChoice);
+	ImGuiController::render(*this->window, this->sorted, &sortChoice,
+		Settings::getAmountOfDataPointer(), Settings::getAnimationSpeedPointer());
 	this->window->display();
 }
 

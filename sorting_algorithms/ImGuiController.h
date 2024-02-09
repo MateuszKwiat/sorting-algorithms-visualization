@@ -14,7 +14,7 @@ private:
 	sf::Clock deltaClock;
 	ImFont* mainFont;
 
-	void menu(bool& choice, int* sortChoice);
+	void menu(bool& choice, int* sortChoice, int* dataSize, int* speed);
 
 public:
 	ImGuiController();
@@ -22,6 +22,6 @@ public:
 	void initialize(sf::RenderWindow& window);
 	void eventProcessing(sf::Event& event);
 	void update(sf::RenderWindow& window);
-	void render(sf::RenderWindow& window, bool& start, int* sortChoice);
+	void render(sf::RenderWindow& window, bool& start, int* sortChoice, int* dataSize, int* speed);
 };
 
