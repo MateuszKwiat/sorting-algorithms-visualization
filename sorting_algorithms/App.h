@@ -59,7 +59,6 @@ private:
 	void UpdateWindowAndColor();
 	void setDataWidth();
 
-
 	// Sorting algorithms
 	void bubbleSort(int low, int high);
 	void selectionSort(int low, int high);
@@ -68,7 +67,7 @@ private:
 
 public:
 	// Constructor and destructor
-	App(int animationSpeed, int amountOfData, int sortChoice);
+	App(int animationSpeed = 1, int amountOfData = 100, int sortChoice = 0);
 	~App();
 
 	// Accessors
