@@ -1,8 +1,7 @@
 #include "App.h"
 
 //										Private methods
-void App::initializeVariables()
-{
+void App::initializeVariables() {
 	this->vectorCoordinatesX = 0.f;
 	this->setDataWidth();
 	this->sorted = true;
@@ -10,13 +9,10 @@ void App::initializeVariables()
 	this->appIsRunning = true;
 }
 
-void App::initializeVector()
-{
+void App::initializeVector() {
 	this->dataVector.resize(Settings::amountOfData);
 
-
-	for (auto& x : this->dataVector)
-	{
+	for (auto& x : this->dataVector) {
 		x.shape.setFillColor(sf::Color::White);
 		x.shape.setSize(sf::Vector2f(this->dataSizeX,
 			rand() % 1050 + 20));
@@ -38,25 +34,21 @@ void App::initializeVector()
 
 }
 
-void App::initializeMap()
-{
+void App::initializeMap() {
 	sortingFunctionsMap[0] = [=](int low, int high) { bubbleSort(low, high); };
 	sortingFunctionsMap[1] = [=](int low, int high) { selectionSort(low, high); };
 	sortingFunctionsMap[2] = [=](int low, int high) { quickSort(low, high); };
 }
 
-void App::initializeWindow()
-{
+void App::initializeWindow() {
 	this->videoMode = sf::VideoMode::getDesktopMode();
 	this->window = new sf::RenderWindow(this->videoMode,
 		"sorting algorithms", sf::Style::Default);
 	this->window->setFramerateLimit(60);
 }
 
-void App::windowUpdateAndDisplay()
-{
+void App::windowUpdateAndDisplay() {
 //	this->pollEvents();
-
 	this->window->clear();
 
 	for (auto& x : this->dataVector)
@@ -78,8 +70,7 @@ void App::setDataWidth() {
 
 //										Constructor and destructor
 App::App(int animationSpeed, int amountOfData, int sortChoice) 
-	: Settings(), ImGuiController()
-{
+	: Settings(), ImGuiController() {
 	this->sortChoice = sortChoice;
 
 	this->initializeWindow();
@@ -90,35 +81,30 @@ App::App(int animationSpeed, int amountOfData, int sortChoice)
 	this->initializeMap();
 }
 
-App::~App()
-{
+App::~App() {
 	ImGuiController::~ImGuiController();
 	delete this->window;
 }
 
 
 //										Accessors
-const bool App::running() const
-{
+const bool App::running() const {
 	return appIsRunning;
 }
 
 
 //										Methods
-void App::pollEvents()
-{
-	while (this->window->pollEvent(this->event))
-	{
+void App::pollEvents() {
+	while (this->window->pollEvent(this->event)) {
 		ImGuiController::eventProcessing(this->event);
-		switch (this->event.type)
-		{
+		switch (this->event.type) {
 		case sf::Event::Closed:
 			this->window->close();
 			this->appIsRunning = false;
 			break;
+
 		case sf::Event::KeyPressed:
-			if (this->event.key.code == sf::Keyboard::Escape)
-			{
+			if (this->event.key.code == sf::Keyboard::Escape) {
 				this->window->close();
 				this->appIsRunning = false;
 			}
@@ -127,12 +113,9 @@ void App::pollEvents()
 	}
 }
 
-void App::render()
-{
-
+void App::render() {
 	this->pollEvents();
-	if (!this->sorted)
-	{
+	if (!this->sorted) {
 		auto pickedSortingFunction = sortingFunctionsMap[sortChoice];
 		pickedSortingFunction(0, dataVector.size() - 1);
 		this->checkIfSorted();
@@ -152,8 +135,7 @@ void App::render()
 }
 
 //										Debug methods
-void App::show() const
-{
+void App::show() const {
 	for (auto x : dataVector)
 		std::cout << x.value << std::endl;
 }

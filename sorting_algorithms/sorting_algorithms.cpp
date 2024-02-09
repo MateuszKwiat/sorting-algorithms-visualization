@@ -1,12 +1,10 @@
 #include "App.h"
 
-int main()
-{
+int main() {
 	srand(time(0));
 	App app;
 
-	while (app.running())
-	{
+	while (app.running()) {
 		app.render();
 	}
 }

@@ -22,6 +22,7 @@ public:
 	void initialize(sf::RenderWindow& window);
 	void eventProcessing(sf::Event& event);
 	void update(sf::RenderWindow& window);
-	void render(sf::RenderWindow& window, bool& apply, bool& start, int* sortChoice, int* dataSize, int* speed);
+	void render(sf::RenderWindow& window, bool& apply, bool& start,
+		int* sortChoice, int* dataSize, int* speed);
 };
 

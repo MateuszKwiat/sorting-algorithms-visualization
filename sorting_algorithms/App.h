@@ -17,15 +17,13 @@
 #include "Settings.h"
 #include "ImGuiController.h"
 
-struct dataSprite
-{
+struct dataSprite {
 	sf::RectangleShape shape;
 	int value;
 //	dataSprite operator=(dataSprite &other);
 };
 
-class App : protected Settings, private ImGuiController
-{
+class App : protected Settings, private ImGuiController {
 private:
 	// Window
 	sf::VideoMode videoMode;

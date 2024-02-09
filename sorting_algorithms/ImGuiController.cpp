@@ -35,7 +35,8 @@ void ImGuiController::update(sf::RenderWindow& window) {
 	ImGui::SFML::Update(window, this->deltaClock.restart());
 }
 
-void ImGuiController::render(sf::RenderWindow& window, bool& apply, bool& start, int* sortChoice, int* dataSize, int* speed) {
+void ImGuiController::render(sf::RenderWindow& window, bool& apply, bool& start, 
+	int* sortChoice, int* dataSize, int* speed) {
 	this->menu(apply, start, sortChoice, dataSize, speed);
 	ImGui::SFML::Render(window);
 }

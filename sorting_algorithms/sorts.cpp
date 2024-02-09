@@ -1,24 +1,20 @@
 #include "App.h"
 
 //										Auxiliary methods
-void App::checkIfSorted()
-{
+void App::checkIfSorted() {
 	int notInOrder = 0;
-	
 	int frame = 0;
 
 	for (auto& x : this->dataVector)
 		x.shape.setFillColor(sf::Color::White);
 
 	// Check if values are in order, if so set their color to green
-	for (auto i = this->dataVector.begin(); i != this->dataVector.end() - 1; i++)
-	{
+	for (auto i = this->dataVector.begin(); i != this->dataVector.end() - 1; i++) {
 		if (i->value <= (i + 1)->value)
 			i->shape.setFillColor(sf::Color::Green);
 		else
 			notInOrder++;
-		if (frame % Settings::animationSpeed == 0)
-		{
+		if (frame % Settings::animationSpeed == 0) {
 			this->pollEvents();
 			if (this->appIsRunning == false)
 				break;
@@ -34,15 +30,16 @@ void App::checkIfSorted()
 		this->sorted = true;
 }
 
-void App::swap(int first, int second)
-{
+void App::swap(int first, int second) {
 	dataSprite temp;
 
 	// Swap sizes and values
 	temp.value = dataVector[second].value;
-	temp.shape.setSize(sf::Vector2f(dataVector[second].shape.getSize().x, dataVector[second].shape.getSize().y));
+	temp.shape.setSize(sf::Vector2f(dataVector[second].shape.getSize().x,
+		dataVector[second].shape.getSize().y));
 	dataVector[second].value = dataVector[first].value;
-	dataVector[second].shape.setSize(sf::Vector2f(dataVector[first].shape.getSize().x, dataVector[first].shape.getSize().y));
+	dataVector[second].shape.setSize(sf::Vector2f(dataVector[first].shape.getSize().x, 
+		dataVector[first].shape.getSize().y));
 	dataVector[first].value = temp.value;
 	dataVector[first].shape.setSize(sf::Vector2f(temp.shape.getSize().x, temp.shape.getSize().y));
 
@@ -55,24 +52,18 @@ void App::swap(int first, int second)
 	dataVector[first].shape.setOrigin(sf::Vector2f(0.f, dataVector[first].shape.getGlobalBounds().height));
 }
 
-int App::partition(int low, int high)
-{
+int App::partition(int low, int high) {
 	int frame = 0;
-
 	int pivot = dataVector[high].value;
-
 	int i = (low - 1);
 
-	for (int j = low; j < high; j++)
-	{		
-		if (dataVector[j].value <= pivot)
-		{
+	for (int j = low; j < high; j++) {		
+		if (dataVector[j].value <= pivot) {
 			i++;
 			swap(i, j);
 		}
 
-		if (frame % Settings::animationSpeed == 0)
-		{
+		if (frame % Settings::animationSpeed == 0) {
 			this->pollEvents();
 			if (this->appIsRunning == false)
 				break;
@@ -106,8 +97,7 @@ int App::partition(int low, int high)
 //	
 //}
 
-void App::UpdateWindowAndColor()
-{
+void App::UpdateWindowAndColor() {
 	this->windowUpdateAndDisplay();
 
 	for (auto& x : this->dataVector)
@@ -115,20 +105,16 @@ void App::UpdateWindowAndColor()
 }
 
 //										Sorting algorithms
-void App::bubbleSort(int low, int high)
-{
+void App::bubbleSort(int low, int high) {
 	int frame = 0;
-
 	dataSprite temp;
 
-	for (int i = dataVector.size() - 1; i != 0; i--)
-	{
+	for (int i = dataVector.size() - 1; i != 0; i--) {
 		for (int j = 0; j != i; j++)
 			if (dataVector[j].value > dataVector[i].value)
 				swap(i, j);
 		
-		if (frame % Settings::animationSpeed == 0)
-		{
+		if (frame % Settings::animationSpeed == 0) {
 			this->pollEvents();
 			if (this->appIsRunning == false)
 				break;
@@ -139,19 +125,16 @@ void App::bubbleSort(int low, int high)
 	}
 }
 
-void App::selectionSort(int low, int high)
-{
+void App::selectionSort(int low, int high) {
 	int frame = 0;
 
-	for (int step = 0; step < dataVector.size() - 1; step++)
-	{
+	for (int step = 0; step < dataVector.size() - 1; step++) {
 		int minimumValueIndex = step;
 		for (int i = step + 1; i < dataVector.size(); i++)
 			if (dataVector[i].value < dataVector[minimumValueIndex].value)
 				minimumValueIndex = i;
 
-		if (frame % Settings::animationSpeed == 0)
-		{
+		if (frame % Settings::animationSpeed == 0) {
 			this->pollEvents();
 			if (this->appIsRunning == false)
 				break;
@@ -187,10 +170,8 @@ void App::selectionSort(int low, int high)
 //	frame++;
 //}
 
-void App::quickSort(int low, int high)
-{
-	if (low < high)
-	{
+void App::quickSort(int low, int high) {
+	if (low < high) {
 		int pivot = partition(low, high);
 		quickSort(low, pivot - 1);
 		quickSort(pivot + 1, high);

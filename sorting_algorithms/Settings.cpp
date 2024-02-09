@@ -2,8 +2,7 @@
 
 Settings::Settings() : animationSpeed(0), amountOfData(0), windowWidth(0), dataWithSpaces(true) {}
 
-void Settings::setSettings(int animationSpeed, int amountOfData, int windowWidth)
-{
+void Settings::setSettings(int animationSpeed, int amountOfData, int windowWidth) {
 	this->animationSpeed = animationSpeed;
 	this->amountOfData = amountOfData;
 	this->windowWidth = windowWidth;
