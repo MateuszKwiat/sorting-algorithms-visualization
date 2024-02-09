@@ -15,3 +15,10 @@ void Settings::setSettings(int animationSpeed, int amountOfData, int windowWidth
 	else
 		this->dataWithSpaces = true;
 }
+
+void Settings::checkIfDataWithSpaces() {
+	if (amountOfData * 2 >= windowWidth)
+		this->dataWithSpaces = false;
+	else
+		this->dataWithSpaces = true;
+}

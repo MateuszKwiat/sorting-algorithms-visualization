@@ -12,5 +12,6 @@ public:
 	void setSettings(int animationSpeed, int amountOfData, int windowWidth);
 	int* getAmountOfDataPointer() { return &amountOfData; }
 	int* getAnimationSpeedPointer() { return &animationSpeed; }
+	void checkIfDataWithSpaces();
 };
 

@@ -36,7 +36,8 @@ private:
 	float vectorCoordinatesX;
 	float dataSizeX;
 	bool sorted;
-	bool isRunning;
+	bool applyChanges;
+	bool appIsRunning;
 	int sortChoice;
 
 	// App objects
@@ -56,6 +57,7 @@ private:
 	void swap(int a, int b);
 	int partition(int low, int high);
 	void UpdateWindowAndColor();
+	void setDataWidth();
 
 
 	// Sorting algorithms

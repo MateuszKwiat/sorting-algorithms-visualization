@@ -7,7 +7,7 @@ ImGuiController::~ImGuiController() {
 	ImGui::SFML::Shutdown();
 }
 
-void ImGuiController::menu(bool& start, int* sortChoice, int* dataSize, int* speed) {
+void ImGuiController::menu(bool& apply, bool& start, int* sortChoice, int* dataSize, int* speed) {
 
 	ImGui::Begin("Data and sorting settings");
 	ImGui::RadioButton("Sort1", sortChoice, 0);
@@ -15,7 +15,9 @@ void ImGuiController::menu(bool& start, int* sortChoice, int* dataSize, int* spe
 	ImGui::RadioButton("Sort3", sortChoice, 2);
 	ImGui::SliderInt("Data Size", dataSize, 1, 1820);
 	ImGui::SliderInt("Animation speed", speed, 1, 20);
-	ImGui::Button("Apply");
+	if (ImGui::Button("Apply"))
+		apply = true;
+
 	if (ImGui::Button("Start"))
 		start = false;
 	ImGui::End();
@@ -33,7 +35,7 @@ void ImGuiController::update(sf::RenderWindow& window) {
 	ImGui::SFML::Update(window, this->deltaClock.restart());
 }
 
-void ImGuiController::render(sf::RenderWindow& window, bool& start, int* sortChoice, int* dataSize, int* speed) {
-	this->menu(start, sortChoice, dataSize, speed);
+void ImGuiController::render(sf::RenderWindow& window, bool& apply, bool& start, int* sortChoice, int* dataSize, int* speed) {
+	this->menu(apply, start, sortChoice, dataSize, speed);
 	ImGui::SFML::Render(window);
 }

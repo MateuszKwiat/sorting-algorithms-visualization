@@ -20,7 +20,7 @@ void App::checkIfSorted()
 		if (frame % Settings::animationSpeed == 0)
 		{
 			this->pollEvents();
-			if (this->isRunning == false)
+			if (this->appIsRunning == false)
 				break;
 			this->windowUpdateAndDisplay();
 		}
@@ -74,7 +74,7 @@ int App::partition(int low, int high)
 		if (frame % Settings::animationSpeed == 0)
 		{
 			this->pollEvents();
-			if (this->isRunning == false)
+			if (this->appIsRunning == false)
 				break;
 			this->UpdateWindowAndColor();
 		}
@@ -130,7 +130,7 @@ void App::bubbleSort(int low, int high)
 		if (frame % Settings::animationSpeed == 0)
 		{
 			this->pollEvents();
-			if (this->isRunning == false)
+			if (this->appIsRunning == false)
 				break;
 			this->UpdateWindowAndColor();
 		}
@@ -153,7 +153,7 @@ void App::selectionSort(int low, int high)
 		if (frame % Settings::animationSpeed == 0)
 		{
 			this->pollEvents();
-			if (this->isRunning == false)
+			if (this->appIsRunning == false)
 				break;
 			this->UpdateWindowAndColor();
 		}

@@ -4,16 +4,10 @@
 void App::initializeVariables()
 {
 	this->vectorCoordinatesX = 0.f;
-
-	// calculate the width of blocks and if they should be separated.
-	if (Settings::dataWithSpaces)
-		this->dataSizeX = (this->window->getSize().x - Settings::amountOfData) /
-			static_cast<float>(Settings::amountOfData);
-	else
-		this->dataSizeX = (this->window->getSize().x / static_cast<float>(Settings::amountOfData));
-
+	this->setDataWidth();
 	this->sorted = true;
-	this->isRunning = true;
+	this->applyChanges = false;
+	this->appIsRunning = true;
 }
 
 void App::initializeVector()
@@ -69,9 +63,17 @@ void App::windowUpdateAndDisplay()
 		this->window->draw(x.shape);
 	
 	ImGuiController::update(*this->window);
-	ImGuiController::render(*this->window, this->sorted, &sortChoice,
+	ImGuiController::render(*this->window, this->applyChanges, this->sorted, &sortChoice,
 		Settings::getAmountOfDataPointer(), Settings::getAnimationSpeedPointer());
 	this->window->display();
+}
+
+void App::setDataWidth() {
+	if (Settings::dataWithSpaces)
+		this->dataSizeX = (this->window->getSize().x - Settings::amountOfData) /
+		static_cast<float>(Settings::amountOfData);
+	else
+		this->dataSizeX = (this->window->getSize().x / static_cast<float>(Settings::amountOfData));
 }
 
 //										Constructor and destructor
@@ -98,7 +100,7 @@ App::~App()
 //										Accessors
 const bool App::running() const
 {
-	return isRunning;
+	return appIsRunning;
 }
 
 
@@ -112,13 +114,13 @@ void App::pollEvents()
 		{
 		case sf::Event::Closed:
 			this->window->close();
-			this->isRunning = false;
+			this->appIsRunning = false;
 			break;
 		case sf::Event::KeyPressed:
 			if (this->event.key.code == sf::Keyboard::Escape)
 			{
 				this->window->close();
-				this->isRunning = false;
+				this->appIsRunning = false;
 			}
 			break;
 		}
@@ -134,14 +136,18 @@ void App::render()
 		auto pickedSortingFunction = sortingFunctionsMap[sortChoice];
 		pickedSortingFunction(0, dataVector.size() - 1);
 		this->checkIfSorted();
-
-		this->vectorCoordinatesX = 0.f;
-		this->dataVector.clear();
-		this->initializeVector();
 		this->sorted = true;
 	}
 	else {
 		this->windowUpdateAndDisplay();
+		if (this->applyChanges && this->sorted) {
+			Settings::checkIfDataWithSpaces();
+			this->setDataWidth();
+			this->vectorCoordinatesX = 0.f;
+			this->dataVector.clear();
+			this->initializeVector();
+			this->applyChanges = false;
+		}
 	}
 }
 
