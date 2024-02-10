@@ -10,14 +10,16 @@ ImGuiController::~ImGuiController() {
 void ImGuiController::menu(bool& apply, bool& start, int* sortChoice, int* dataSize, int* speed) {
 
 	ImGui::Begin("Data and sorting settings");
-	ImGui::RadioButton("Sort1", sortChoice, 0);
-	ImGui::RadioButton("Sort2", sortChoice, 1);
-	ImGui::RadioButton("Sort3", sortChoice, 2);
+	ImGui::RadioButton("Bubble Sort", sortChoice, 0);
+	ImGui::SameLine();
+	ImGui::RadioButton("Selection Sort", sortChoice, 1);
+	ImGui::SameLine();
+	ImGui::RadioButton("Quick Sort", sortChoice, 2);
 	ImGui::SliderInt("Data Size", dataSize, 1, 1820);
 	ImGui::SliderInt("Animation speed", speed, 1, 20);
 	if (ImGui::Button("Apply"))
 		apply = true;
-
+	ImGui::SameLine();
 	if (ImGui::Button("Start"))
 		start = false;
 	ImGui::End();
