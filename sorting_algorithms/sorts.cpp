@@ -61,13 +61,13 @@ int App::partition(int low, int high) {
 		if (dataVector[j].value <= pivot) {
 			i++;
 			swap(i, j);
-		}
 
 		if (frame % Settings::animationSpeed == 0) {
 			this->pollEvents();
 			if (this->appIsRunning == false)
 				break;
 			this->UpdateWindowAndColor();
+		}
 		}
 
 		frame++;
