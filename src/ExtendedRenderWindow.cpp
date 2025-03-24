@@ -9,3 +9,9 @@ ExtendedRenderWindow::ExtendedRenderWindow(sf::VideoMode video_mode, const char 
 void ExtendedRenderWindow::draw(const ValueSprite &sprite) {
     RenderWindow::draw(sprite);
 }
+
+void ExtendedRenderWindow::draw(const ValuesVectorController& controller) {
+    for (const auto& val : controller) {
+        RenderWindow::draw(*val);
+    }
+}

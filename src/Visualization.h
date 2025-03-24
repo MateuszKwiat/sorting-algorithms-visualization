@@ -7,16 +7,16 @@
 #include <SFML/Graphics.hpp>
 
 #include "ValueSprite.h"
+#include "ValuesVectorController.h"
 #include "ExtendedRenderWindow.h"
 
 class Visualization {
 private:
-    ExtendedRenderWindow* window = nullptr;
-
-    ValueSprite* test_val = nullptr;
+    std::unique_ptr<ExtendedRenderWindow> window;
+    std::unique_ptr<ValuesVectorController> controller;
 
 public:
     Visualization();
-    ~Visualization();
+    ~Visualization() = default;
     void run() const;
 };

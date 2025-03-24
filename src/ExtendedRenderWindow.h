@@ -5,7 +5,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+
 #include "ValueSprite.h"
+#include "ValuesVectorController.h"
 
 class ExtendedRenderWindow final : public sf::RenderWindow {
 public:
@@ -13,4 +15,5 @@ public:
     ExtendedRenderWindow(sf::VideoMode video_mode, const char * str);
     ExtendedRenderWindow() = default;
     void draw(const ValueSprite & sprite);
+    void draw(const ValuesVectorController & controller);
 };

@@ -2,18 +2,15 @@
 // Created by Mateusz Kwiatkowski on 24/03/2025.
 //
 
+#include <memory>
+
 #include "Visualization.h"
 
 Visualization::Visualization() {
-    window = new ExtendedRenderWindow(sf::VideoMode({1200, 800}), "Sorting algorithms visualization");
+    window = std::make_unique<ExtendedRenderWindow>(sf::VideoMode({1200, 800}), "Sorting algorithms visualization");
     window->setFramerateLimit(60);
 
-    test_val = new ValueSprite(0.5f, sf::Vector2f(100.f, 50.f), sf::Vector2f(0.f, 800.f));
-}
-
-Visualization::~Visualization() {
-    delete test_val;
-    delete window;
+    controller = std::make_unique<ValuesVectorController>(8, window->getSize());
 }
 
 void Visualization::run() const {
@@ -23,11 +20,16 @@ void Visualization::run() const {
         {
             if (event->is<sf::Event::Closed>())
                 window->close();
+            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+            {
+                if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
+                    window->close();
+            }
         }
 
         window->clear();
 
-        window->draw(*test_val);
+        window->draw(*controller);
 
         window->display();
     }
