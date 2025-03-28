@@ -10,7 +10,7 @@ Visualization::Visualization() {
     window = std::make_unique<ExtendedRenderWindow>(sf::VideoMode({1200, 800}), "Sorting algorithms visualization");
     window->setFramerateLimit(60);
 
-    controller = std::make_unique<ValuesVectorController>(200, window->getSize());
+    controller = std::make_unique<ValuesVectorController>(20, window->getSize());
 }
 
 void Visualization::run() const {

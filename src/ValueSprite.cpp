@@ -4,10 +4,10 @@
 
 #include "ValueSprite.h"
 
-ValueSprite::ValueSprite(const sf::Vector2f &size, const sf::Vector2f &position) {
-    this->value = value;
-    this->setSize(size);
-    this->setOrigin({0.f, size.y});
+ValueSprite::ValueSprite(const float val, const sf::Vector2f &size, const sf::Vector2f &position) {
+    this->value = val;
+    this->setSize({size.x, size.y * value});
+    this->setOrigin({0.f, this->getSize().y});
     this->setPosition(position);
     this->setFillColor(sf::Color::White);
 }

@@ -20,7 +20,7 @@ private:
 
     void initialize_vector(unsigned int amount, const sf::Vector2u& window_size);
     void calculate_value_sprite_params(unsigned int amount, const sf::Vector2u& window_size);
-
+    ValueSprite& prepare_value_sprite(ValueSprite& value_sprite, sf::Vector2f& value_sprite_position) const;
 public:
     ValuesVectorController(unsigned int amount, const sf::Vector2u& window_size);
     ~ValuesVectorController() = default;
