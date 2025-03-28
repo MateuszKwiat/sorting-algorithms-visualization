@@ -11,7 +11,11 @@ private:
     float value {};
 
 public:
-    ValueSprite(float value, const sf::Vector2f& size, const sf::Vector2f& position);
+    ValueSprite(const sf::Vector2f& size, const sf::Vector2f& position);
+    ValueSprite(const ValueSprite& value_sprite) noexcept;
+    ValueSprite() = default;
+    ValueSprite& operator=(float val) noexcept;
+    explicit operator float() const noexcept { return value; }
 };
 
 
