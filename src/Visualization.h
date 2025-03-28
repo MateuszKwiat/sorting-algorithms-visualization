@@ -6,9 +6,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "ValueSprite.h"
 #include "ValuesVectorController.h"
 #include "ExtendedRenderWindow.h"
+#include "Sorter.h"
 
 class Visualization {
 private:

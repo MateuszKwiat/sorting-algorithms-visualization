@@ -4,7 +4,6 @@
 
 #include <memory>
 #include <ranges>
-#include <iostream>
 
 #include "ValuesVectorController.h"
 
@@ -51,4 +50,14 @@ void ValuesVectorController::initialize_vector(const int unsigned amount, const 
 
     (*this)[0]->setFillColor(sf::Color::Magenta);
     (*this)[amount - 1]->setFillColor(sf::Color::Magenta);
+}
+
+bool ValuesVectorController::more_than(unsigned int i, unsigned int j) const {
+    return static_cast<float>(*(*this)[i]) > static_cast<float>(*(*this)[j]);
+}
+
+void ValuesVectorController::swap(unsigned int i, unsigned int j) const {
+    const ValueSprite temp_value_sprite(*(*this)[i]);
+    *(*this)[i] = static_cast<float>(*(*this)[j]);
+    *(*this)[j] = static_cast<float>(temp_value_sprite);
 }

@@ -24,6 +24,9 @@ private:
 public:
     ValuesVectorController(unsigned int amount, const sf::Vector2u& window_size);
     ~ValuesVectorController() = default;
+    bool more_than(unsigned int i, unsigned int j) const;
+    void swap(unsigned int i, unsigned int j) const;
 
     friend class ExtendedRenderWindow;
+    friend class Sorter;
 };

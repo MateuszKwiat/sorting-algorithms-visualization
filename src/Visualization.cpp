@@ -10,10 +10,11 @@ Visualization::Visualization() {
     window = std::make_unique<ExtendedRenderWindow>(sf::VideoMode({1200, 800}), "Sorting algorithms visualization");
     window->setFramerateLimit(60);
 
-    controller = std::make_unique<ValuesVectorController>(20, window->getSize());
+    controller = std::make_unique<ValuesVectorController>(250, window->getSize());
 }
 
 void Visualization::run() const {
+    int i = 0;
     while (window->isOpen())
     {
         while (const std::optional event = window->pollEvent())
@@ -30,6 +31,11 @@ void Visualization::run() const {
         window->clear();
 
         window->draw(*controller);
+
+        if (i == 0) {
+            Sorter::bubble_sort(*controller, *window);
+            i++;
+        }
 
         window->display();
     }
