@@ -7,7 +7,7 @@
 
 #include "ValuesVectorController.h"
 
-ValuesVectorController::ValuesVectorController(const unsigned int amount, const sf::Vector2u& window_size) {
+ValuesVectorController::ValuesVectorController(const unsigned int amount, const sf::Vector2u& window_size) : is_sorted(false) {
     gen = std::make_unique<std::mt19937>(rd());
     value_distribution = std::make_unique<std::uniform_real_distribution<float>>(0.0f, 1.0f);
 
@@ -60,4 +60,9 @@ void ValuesVectorController::swap(unsigned int i, unsigned int j) const {
     const ValueSprite temp_value_sprite(*(*this)[i]);
     *(*this)[i] = static_cast<float>(*(*this)[j]);
     *(*this)[j] = static_cast<float>(temp_value_sprite);
+}
+
+ValuesVectorController &ValuesVectorController::operator=(const bool val) noexcept {
+    is_sorted = val;
+    return *this;
 }

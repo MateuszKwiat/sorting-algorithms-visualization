@@ -10,10 +10,14 @@
 #include "ValuesVectorController.h"
 
 class ExtendedRenderWindow final : public sf::RenderWindow {
+private:
+    void draw(const ValueSprite & sprite);
+    void draw(const ValuesVectorController & controller);
+
 public:
     using sf::RenderWindow::draw;
     ExtendedRenderWindow(sf::VideoMode video_mode, const char * str);
     ExtendedRenderWindow() = default;
-    void draw(const ValueSprite & sprite);
-    void draw(const ValuesVectorController & controller);
+    void handle_events();
+    void update(const ValuesVectorController & controller);
 };

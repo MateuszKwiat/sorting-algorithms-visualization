@@ -13,7 +13,7 @@
 class Visualization {
 private:
     std::unique_ptr<ExtendedRenderWindow> window;
-    std::unique_ptr<ValuesVectorController> controller;
+    std::unique_ptr<ValuesVectorController> vector_controller;
 
 public:
     Visualization();
