@@ -15,7 +15,7 @@ void ExtendedRenderWindow::draw(const ValueSprite &sprite) {
 
 void ExtendedRenderWindow::draw(const ValuesVectorController& controller) {
     for (const auto& val : controller) {
-        RenderWindow::draw(*val);
+        RenderWindow::draw(val);
     }
 }
 

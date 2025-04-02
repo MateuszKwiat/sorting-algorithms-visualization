@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <ranges>
+#include <algorithm>
 
 #include "ValuesVectorController.h"
 #include "Config.h"
@@ -46,24 +47,30 @@ void ValuesVectorController::initialize_vector() {
 
     std::ranges::for_each(std::views::iota(0u, static_cast<unsigned int>(Config::amount)), [&](int i) -> void {
         this->emplace_back(
-            std::make_unique<ValueSprite>(this->prepare_value_sprite(temp_value_sprite, value_sprite_position)));
+            ValueSprite(this->prepare_value_sprite(temp_value_sprite, value_sprite_position)));
     });
 
-    (*this)[0]->setFillColor(sf::Color::Magenta);
-    (*this)[Config::amount - 1]->setFillColor(sf::Color::Magenta);
+    (*this)[0].setFillColor(sf::Color::Magenta);
+    (*this)[Config::amount - 1].setFillColor(sf::Color::Magenta);
 }
 
 bool ValuesVectorController::more_than(const unsigned int i, const unsigned int j) const {
-    return static_cast<float>(*(*this)[i]) > static_cast<float>(*(*this)[j]);
+    return static_cast<float>((*this)[i]) > static_cast<float>((*this)[j]);
 }
 
-void ValuesVectorController::swap(const unsigned int i, const unsigned int j) const {
-    const ValueSprite temp_value_sprite(*(*this)[i]);
-    *(*this)[i] = static_cast<float>(*(*this)[j]);
-    *(*this)[j] = static_cast<float>(temp_value_sprite);
+void ValuesVectorController::swap(const unsigned int i, const unsigned int j) {
+    const ValueSprite temp_value_sprite((*this)[i]);
+    (*this)[i] = static_cast<float>((*this)[j]);
+    (*this)[j] = static_cast<float>(temp_value_sprite);
 }
 
 ValuesVectorController &ValuesVectorController::operator=(const bool val) noexcept {
     is_sorted = val;
     return *this;
 }
+
+void ValuesVectorController::shuffle() {
+    std::ranges::shuffle(this->get_vector(), *gen);
+    Config::shuffle = false;
+}
+

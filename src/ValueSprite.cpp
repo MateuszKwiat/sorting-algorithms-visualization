@@ -25,4 +25,11 @@ ValueSprite &ValueSprite::operator=(const float val) noexcept {
     return *this;
 }
 
+void swap(ValueSprite& lhs, ValueSprite& rhs) noexcept {
+    const ValueSprite temp_value_sprite = lhs;
+    lhs = static_cast<float>(rhs);
+    rhs = static_cast<float>(temp_value_sprite);
+}
+
+
 

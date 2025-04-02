@@ -36,7 +36,7 @@ void Gui::gui(sf::RenderWindow &window) {
         }
         ImGui::SameLine();
         if (ImGui::Button("Shuffle", button_size)) {
-
+            Config::shuffle = true;
         }
         ImGui::SameLine();
         if (ImGui::Button("Apply", button_size)) {

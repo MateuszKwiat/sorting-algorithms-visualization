@@ -18,8 +18,8 @@ void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWi
                 return;
             }
 
-            values_vector[j]->setFillColor(sf::Color::Red);
-            values_vector[j + 1]->setFillColor(sf::Color::Red);
+            values_vector[j].setFillColor(sf::Color::Red);
+            values_vector[j + 1].setFillColor(sf::Color::Red);
             if (values_vector.more_than(j, j + 1)) {
                 values_vector.swap(j, j + 1);
                 swapped = true;
@@ -29,8 +29,8 @@ void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWi
                 frames_counter = 0;
             }
 
-            values_vector[j]->setFillColor(sf::Color::White);
-            values_vector[j + 1]->setFillColor(sf::Color::White);
+            values_vector[j].setFillColor(sf::Color::White);
+            values_vector[j + 1].setFillColor(sf::Color::White);
         }
 
         if (!swapped) break;

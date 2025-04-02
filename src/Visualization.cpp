@@ -25,6 +25,9 @@ void Visualization::run() const {
         if (Config::sort) {
             Sorter::bubble_sort(*vector_controller, *window);
         }
+        else if (Config::shuffle) {
+            vector_controller->shuffle();
+        }
         else {
             window->handle_events();
             window->update(*vector_controller);
