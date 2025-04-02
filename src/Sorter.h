@@ -13,5 +13,5 @@ class Sorter {
 public:
     Sorter() = delete;
 
-    static void bubble_sort(ValuesVectorController& values_vector, ExtendedRenderWindow& window);
+    static void bubble_sort(ValuesVectorController& values_vector, const int& frames_to_skip, ExtendedRenderWindow& window);
 };

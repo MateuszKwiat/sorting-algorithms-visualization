@@ -5,8 +5,9 @@
 #include <memory>
 
 #include "Visualization.h"
+#include "Config.h"
 
-Visualization::Visualization() {
+Visualization::Visualization() : frames_to_skip(0) {
     window = std::make_unique<ExtendedRenderWindow>(sf::VideoMode({1200, 800}), "Sorting algorithms visualization");
     window->setFramerateLimit(120);
 
@@ -16,8 +17,8 @@ Visualization::Visualization() {
 void Visualization::run() const {
     while (window->isOpen())
     {
-        if (!static_cast<bool>(*vector_controller)) {
-            Sorter::bubble_sort(*vector_controller, *window);
+        if (Config::sort && !static_cast<bool>(*vector_controller)) {
+            Sorter::bubble_sort(*vector_controller, frames_to_skip, *window);
         }
         else {
             window->handle_events();

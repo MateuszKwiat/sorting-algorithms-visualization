@@ -4,9 +4,10 @@
 
 #include "Sorter.h"
 
-void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWindow &window) {
+void Sorter::bubble_sort(ValuesVectorController &values_vector, const int& frames_to_skip, ExtendedRenderWindow &window) {
     const size_t n = values_vector.size();
     bool swapped{};
+    int frames_counter = 0;
 
     for (size_t i = 0; i < n - 1; ++i) {
         swapped = false;
@@ -23,8 +24,10 @@ void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWi
                 values_vector.swap(j, j + 1);
                 swapped = true;
             }
-
-            window.update(values_vector);
+            if (frames_counter++ >= frames_to_skip) {
+                window.update(values_vector);
+                frames_counter = 0;
+            }
 
             values_vector[j]->setFillColor(sf::Color::White);
             values_vector[j + 1]->setFillColor(sf::Color::White);
