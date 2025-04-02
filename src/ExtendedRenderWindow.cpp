@@ -4,7 +4,7 @@
 
 #include "ExtendedRenderWindow.h"
 
-ExtendedRenderWindow::ExtendedRenderWindow(sf::VideoMode video_mode, const char *str) : sf::RenderWindow(video_mode, *str) {
+ExtendedRenderWindow::ExtendedRenderWindow(const sf::VideoMode video_mode, const char *str) : sf::RenderWindow(video_mode, *str) {
     if (!ImGui::SFML::Init(*this))
         return;
 }

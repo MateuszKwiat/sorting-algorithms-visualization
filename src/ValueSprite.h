@@ -9,7 +9,7 @@
 class ValueSprite final : public sf::RectangleShape {
 private:
     float value {};
-    float window_height;
+    float window_height{};
 
 public:
     ValueSprite(float val, const sf::Vector2f& size, const sf::Vector2f& position);

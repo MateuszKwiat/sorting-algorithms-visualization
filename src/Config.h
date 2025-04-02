@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "imgui.h"
 
 class Config {
 public:
@@ -19,6 +20,8 @@ public:
     inline static bool shuffle = false;
     inline static bool apply = false;
     constexpr static auto gui_window_size = ImVec2(220, 120);
-    inline static auto sfml_window_size = sf::Vector2f(1200, 800);
+    inline static auto sfml_window_size_f = sf::Vector2f(1200.f, 800.f);
+    inline static auto sfml_window_size_u = sf::Vector2u(1200u, 800u);
+    constexpr static unsigned int framerate_limit = 120u;
 };
 

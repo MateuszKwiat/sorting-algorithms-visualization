@@ -4,7 +4,7 @@
 
 #include "Sorter.h"
 
-void Sorter::bubble_sort(ValuesVectorController &values_vector, const int& frames_to_skip, ExtendedRenderWindow &window) {
+void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWindow &window) {
     const size_t n = values_vector.size();
     bool swapped{};
     int frames_counter = 0;
@@ -24,7 +24,7 @@ void Sorter::bubble_sort(ValuesVectorController &values_vector, const int& frame
                 values_vector.swap(j, j + 1);
                 swapped = true;
             }
-            if (frames_counter++ >= frames_to_skip) {
+            if (frames_counter++ >= Config::frames_to_skip) {
                 window.update(values_vector);
                 frames_counter = 0;
             }
