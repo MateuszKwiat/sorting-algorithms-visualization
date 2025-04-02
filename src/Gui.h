@@ -13,6 +13,7 @@
 class Gui {
 public:
     Gui() = delete;
+    static void set_style();
     static void gui(sf::RenderWindow &window);
 
     static sf::Clock delta_clock;

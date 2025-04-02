@@ -12,10 +12,10 @@ public:
     Config(Config&&) = delete;
     Config& operator=(Config&&) = delete;
 
-    static bool sort;
-    static int frames_to_skip;
-    static int sort_choice;
-    static bool shuffle;
-    static bool apply;
+    inline static bool sort = false;
+    inline static int frames_to_skip = 0;
+    inline static int sort_choice = 0;
+    inline static bool shuffle = false;
+    inline static bool apply = false;
 };
 

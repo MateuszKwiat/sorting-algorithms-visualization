@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Visualization.h"
+
 #include "Sorter.h"
 #include "Config.h"
 
@@ -13,6 +14,7 @@ Visualization::Visualization() : frames_to_skip(0) {
     window->setFramerateLimit(120);
 
     vector_controller = std::make_unique<ValuesVectorController>(70, window->getSize());
+    Gui::set_style();
 }
 
 void Visualization::run() const {
