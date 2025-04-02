@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Visualization.h"
+#include "Sorter.h"
 #include "Config.h"
 
 Visualization::Visualization() : frames_to_skip(0) {
@@ -25,6 +26,7 @@ void Visualization::run() const {
             window->update(*vector_controller);
         }
     }
+    ImGui::SFML::Shutdown();
 }
 
 

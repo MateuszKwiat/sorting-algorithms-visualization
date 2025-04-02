@@ -4,7 +4,10 @@
 
 #include "ExtendedRenderWindow.h"
 
-ExtendedRenderWindow::ExtendedRenderWindow(sf::VideoMode video_mode, const char *str) : sf::RenderWindow(video_mode, *str) {}
+ExtendedRenderWindow::ExtendedRenderWindow(sf::VideoMode video_mode, const char *str) : sf::RenderWindow(video_mode, *str) {
+    if (!ImGui::SFML::Init(*this))
+        return;
+}
 
 void ExtendedRenderWindow::draw(const ValueSprite &sprite) {
     RenderWindow::draw(sprite);
@@ -17,8 +20,9 @@ void ExtendedRenderWindow::draw(const ValuesVectorController& controller) {
 }
 
 void ExtendedRenderWindow::handle_events() {
-    while (const std::optional event = this->pollEvent())
+    while (const auto event = this->pollEvent())
     {
+        ImGui::SFML::ProcessEvent(*this, *event);
         if (event->is<sf::Event::Closed>())
             this->close();
         else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
@@ -30,8 +34,12 @@ void ExtendedRenderWindow::handle_events() {
 }
 
 void ExtendedRenderWindow::update(const ValuesVectorController &controller) {
+    ImGui::SFML::Update(*this, Gui::delta_clock.restart());
+    Gui::gui(*this);
+
     this->clear();
     this->draw(controller);
-    this->display();
+    ImGui::SFML::Render(*this);
 
+    this->display();
 }

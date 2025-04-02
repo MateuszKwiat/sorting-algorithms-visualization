@@ -3,3 +3,5 @@
 //
 
 #include "Config.h"
+
+bool Config::sort = true;

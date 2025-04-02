@@ -8,6 +8,7 @@
 
 #include "ValueSprite.h"
 #include "ValuesVectorController.h"
+#include "Gui.h"
 
 class ExtendedRenderWindow final : public sf::RenderWindow {
 private:

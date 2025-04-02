@@ -8,7 +8,6 @@
 
 #include "ValuesVectorController.h"
 #include "ExtendedRenderWindow.h"
-#include "Sorter.h"
 
 class Visualization {
 private:

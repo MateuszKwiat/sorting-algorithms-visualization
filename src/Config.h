@@ -4,7 +4,7 @@
 
 #pragma once
 
-class Config final {
+class Config {
 public:
     Config() = delete;
     Config(const Config&) = delete;
@@ -18,3 +18,4 @@ public:
     static bool shuffle;
     static bool apply;
 };
+
