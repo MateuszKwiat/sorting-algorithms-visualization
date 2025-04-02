@@ -13,7 +13,6 @@ class Visualization {
 private:
     std::unique_ptr<ExtendedRenderWindow> window;
     std::unique_ptr<ValuesVectorController> vector_controller;
-    int frames_to_skip;
 
 public:
     Visualization();

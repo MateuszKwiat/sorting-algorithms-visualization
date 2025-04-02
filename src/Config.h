@@ -14,8 +14,11 @@ public:
 
     inline static bool sort = false;
     inline static int frames_to_skip = 0;
+    inline static int amount = 70;
     inline static int sort_choice = 0;
     inline static bool shuffle = false;
     inline static bool apply = false;
+    constexpr static auto gui_window_size = ImVec2(220, 120);
+    inline static auto sfml_window_size = sf::Vector2f(1200, 800);
 };
 

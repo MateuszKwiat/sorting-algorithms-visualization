@@ -36,4 +36,5 @@ void Sorter::bubble_sort(ValuesVectorController &values_vector, const int& frame
         if (!swapped) break;
     }
     values_vector = true;
+    Config::sort = false;
 }
