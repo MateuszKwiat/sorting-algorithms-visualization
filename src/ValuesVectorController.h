@@ -27,11 +27,11 @@ private:
     void update_sprites_position_and_size();
     ValueSprite& prepare_value_sprite(ValueSprite& value_sprite);
     std::vector<ValueSprite>& get_vector() { return *this; }
-    [[nodiscard]] const std::vector<ValueSprite>& get_vector() const { return *this; }
 public:
     ValuesVectorController();
     ~ValuesVectorController() = default;
     [[nodiscard]] bool more_than(unsigned int i, unsigned int j) const;
+    [[nodiscard]] const std::vector<ValueSprite>& get_vector() const { return *this; }
     void swap(unsigned int i, unsigned int j);
     explicit operator bool() const noexcept { return is_sorted; }
     explicit operator int() const noexcept { return static_cast<int>(this->size()); }

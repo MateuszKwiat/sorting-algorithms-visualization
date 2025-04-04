@@ -10,6 +10,9 @@
 
 
 class Sorter {
+private:
+    static void after_sort_animation(ValuesVectorController& values_vector, ExtendedRenderWindow& window);
+    static void update_color(const ValuesVectorController& values_vector, ValueSprite& value_sprite, ExtendedRenderWindow& window, const sf::Color& color);
 public:
     Sorter() = delete;
 

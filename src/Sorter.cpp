@@ -4,6 +4,27 @@
 
 #include "Sorter.h"
 
+#include <iostream>
+
+void Sorter::update_color(const ValuesVectorController& values_vector, ValueSprite &value_sprite, ExtendedRenderWindow &window, const sf::Color &color) {
+    value_sprite.setFillColor(sf::Color::Green);
+    window.handle_events();
+    if (!window.isOpen()) {
+        return;
+    }
+    window.update(values_vector);
+}
+
+void Sorter::after_sort_animation(ValuesVectorController &values_vector, ExtendedRenderWindow &window) {
+    std::ranges::for_each(values_vector.get_vector(), [&](ValueSprite &value_sprite) ->void {
+        update_color(values_vector, value_sprite, window, sf::Color::Green);
+    });
+
+    std::ranges::for_each(values_vector.get_vector(), [&](ValueSprite &value_sprite) -> void {
+        value_sprite.setFillColor(sf::Color::White);
+    });
+}
+
 void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWindow &window) {
     const size_t n = values_vector.size();
     bool swapped{};
@@ -35,6 +56,7 @@ void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWi
 
         if (!swapped) break;
     }
+    after_sort_animation(values_vector, window);
     values_vector = true;
     Config::sort = false;
 }
