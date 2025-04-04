@@ -24,12 +24,13 @@ void Gui::gui(sf::RenderWindow &window) {
 
     ImGui::SetCursorPos(ImVec2(10, 30));
     ImGui::SetNextItemWidth(200.f);
-    ImGui::SliderInt("##Frames_to_skip", &Config::frames_to_skip, 0, 120, "Frames to skip: %d");
+    ImGui::SliderInt("##Frames_to_skip", &Config::frames_to_skip, 0, Config::max_frames_to_skip, "Frames to skip: %d");
 
     if (!Config::sort) {
         ImGui::SetCursorPos(ImVec2(10, 60));
         ImGui::SetNextItemWidth(200.f);
-        ImGui::SliderInt("##Amount_of_values", &Config::amount, 0, 2000, "Amount of values: %d");
+        ImGui::SliderInt("##Amount_of_values", &Config::amount, 2, static_cast<int>(Config::sfml_window_size_u.x),
+                         "Amount of values: %d");
 
         if (ImGui::Button("Sort", button_size)) {
             Config::sort = true;
@@ -40,7 +41,7 @@ void Gui::gui(sf::RenderWindow &window) {
         }
         ImGui::SameLine();
         if (ImGui::Button("Apply", button_size)) {
-
+            Config::apply_changes = true;
         }
     }
     else {

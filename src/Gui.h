@@ -13,6 +13,11 @@
 class Gui {
 public:
     Gui() = delete;
+    Gui(const Gui&) = delete;
+    Gui& operator=(const Gui&) = delete;
+    Gui(Gui&&) = delete;
+    Gui& operator=(Gui&&) = delete;
+
     static void set_style();
     static void gui(sf::RenderWindow &window);
 

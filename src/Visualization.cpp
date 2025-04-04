@@ -6,6 +6,8 @@
 
 #include "Visualization.h"
 
+#include <iostream>
+
 #include "Sorter.h"
 #include "Config.h"
 
@@ -27,6 +29,12 @@ void Visualization::run() const {
         }
         else if (Config::shuffle) {
             vector_controller->shuffle();
+        }
+        else if (Config::apply_changes) {
+            if (Config::amount != static_cast<int>(*vector_controller)) {
+                vector_controller->apply_new_size();
+            }
+            Config::apply_changes = false;
         }
         else {
             window->handle_events();
