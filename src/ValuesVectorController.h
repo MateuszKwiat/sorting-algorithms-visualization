@@ -23,8 +23,8 @@ private:
     void initialize_vector();
     void calculate_value_sprite_params();
     void extend_vector();
+    void shrink_vector();
     void update_sprites_position_and_size();
-    void update_value_sprite(int i);
     ValueSprite& prepare_value_sprite(ValueSprite& value_sprite);
     std::vector<ValueSprite>& get_vector() { return *this; }
     [[nodiscard]] const std::vector<ValueSprite>& get_vector() const { return *this; }

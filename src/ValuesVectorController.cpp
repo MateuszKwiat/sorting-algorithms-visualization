@@ -13,6 +13,7 @@ ValuesVectorController::ValuesVectorController() : is_sorted(false) {
     gen = std::make_unique<std::mt19937>(rd());
     value_distribution = std::make_unique<std::uniform_real_distribution<float>>(0.0f, 1.0f);
 
+    this->reserve(sizeof(ValueSprite) * Config::amount / 2);
     this->calculate_value_sprite_params();
     this->initialize_vector();
 }
@@ -42,13 +43,6 @@ ValueSprite& ValuesVectorController::prepare_value_sprite(ValueSprite& value_spr
     return value_sprite;
 }
 
-void ValuesVectorController::update_value_sprite(const int i) {
-    value_sprite_position.x += value_sprite_position_shift;
-    (*this)[i].setPosition(value_sprite_position);
-    (*this)[i].setSize(value_sprite_size);
-}
-
-
 void ValuesVectorController::initialize_vector() {
     ValueSprite temp_value_sprite {(*value_distribution)(*gen), value_sprite_size, value_sprite_position};
 
@@ -58,8 +52,6 @@ void ValuesVectorController::initialize_vector() {
         this->emplace_back(
             ValueSprite(this->prepare_value_sprite(temp_value_sprite)));
     });
-    // (*this)[0].setFillColor(sf::Color::Magenta);
-    // (*this)[Config::amount - 1].setFillColor(sf::Color::Magenta);
 }
 
 bool ValuesVectorController::more_than(const unsigned int i, const unsigned int j) const {
@@ -84,7 +76,7 @@ void ValuesVectorController::shuffle() {
 
 void ValuesVectorController::update_sprites_position_and_size() {
     std::ranges::for_each(std::views::iota(0u, static_cast<unsigned int>(this->size())),
-                          [&](const int i) -> void { update_value_sprite(i); });
+                          [&](const int i) -> void { prepare_value_sprite((*this)[i]); });
 }
 
 void ValuesVectorController::extend_vector() {
@@ -93,8 +85,12 @@ void ValuesVectorController::extend_vector() {
     this->initialize_vector();
 }
 
+void ValuesVectorController::shrink_vector() {
+    this->resize(Config::amount);
+    this->calculate_value_sprite_params();
+    this->update_sprites_position_and_size();
+}
+
 void ValuesVectorController::apply_new_size() {
-    if (Config::amount > this->size()) {
-        this->extend_vector();
-    }
+    Config::amount > this->size() ? this->extend_vector() : this->shrink_vector();
 }
