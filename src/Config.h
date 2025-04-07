@@ -19,7 +19,7 @@ public:
     // general
     inline static bool sort = false;
     inline static int frames_to_skip = 0;
-    inline static int max_frames_to_skip = 360;
+    inline static int max_frames_to_skip = 30;
     inline static int amount = 70;
     inline static bool shuffle = false;
     inline static bool apply_changes = false;

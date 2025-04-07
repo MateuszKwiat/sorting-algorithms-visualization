@@ -11,6 +11,14 @@
 #include "SFML/System/Clock.hpp"
 
 class Gui {
+private:
+    static void make_gui_window();
+    static void make_frames_skip_slider();
+    static void make_amount_slider();
+    static void make_drop_down_list();
+    static void make_buttons();
+    static void make_sorting_text_animation();
+
 public:
     Gui() = delete;
     Gui(const Gui&) = delete;
