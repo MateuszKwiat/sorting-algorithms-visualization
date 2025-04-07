@@ -5,9 +5,6 @@
 #include <memory>
 
 #include "Visualization.h"
-
-#include <iostream>
-
 #include "Sorter.h"
 #include "Config.h"
 
@@ -17,16 +14,23 @@ Visualization::Visualization() {
         sf::VideoMode({Config::sfml_window_size_u.x, Config::sfml_window_size_u.y}),
         "Sorting algorithms visualization", *vector_controller);
     window->setFramerateLimit(Config::framerate_limit);
-
+    this->prepare_sorting_algorithms_map();
     Gui::set_style();
+}
+
+void Visualization::prepare_sorting_algorithms_map() {
+    sorting_algorithms_map[Config::sorting_algorithms[0]] = [&]() -> void { Sorter::bubble_sort(*vector_controller, *window); };
+    sorting_algorithms_map[Config::sorting_algorithms[1]] = [&]() -> void { Sorter::quick_sort(*vector_controller, *window); };
 }
 
 void Visualization::run() const {
     while (window->isOpen())
     {
         if (Config::sort) {
-            // Sorter::bubble_sort(*vector_controller, *window);
-            Sorter::quick_sort(*vector_controller, *window);
+            if (auto map_iterator = sorting_algorithms_map.find(Config::selected_sort);
+                map_iterator != sorting_algorithms_map.end()) {
+                map_iterator->second();
+            }
         }
         else if (Config::shuffle) {
             vector_controller->shuffle();
