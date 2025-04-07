@@ -21,14 +21,29 @@ void Gui::gui(sf::RenderWindow &window) {
     ImGui::Begin("Settings", nullptr, ImGuiWindowFlags_NoResize);
 
     ImGui::SetCursorPos(ImVec2(10, 30));
-    ImGui::SetNextItemWidth(Config::slider_width);
+    ImGui::SetNextItemWidth(Config::max_gui_element_width);
     ImGui::SliderInt("##Frames_to_skip", &Config::frames_to_skip, 0, Config::max_frames_to_skip, "Frames to skip: %d");
 
     if (!Config::sort) {
         ImGui::SetCursorPos(ImVec2(10, 60));
-        ImGui::SetNextItemWidth(Config::slider_width);
+        ImGui::SetNextItemWidth(Config::max_gui_element_width);
         ImGui::SliderInt("##Amount_of_values", &Config::amount, 2, static_cast<int>(Config::sfml_window_size_u.x),
                          "Amount of values: %d");
+
+        ImGui::SetCursorPos(ImVec2(10, 90));
+        ImGui::SetNextItemWidth(Config::max_gui_element_width);
+        if (ImGui::BeginCombo("##Select_sorting_algorithm", Config::selected_sort.c_str())) {
+            for (const auto& sorting_algorithm : Config::sorting_algorithms) {
+                const bool is_selected = (Config::selected_sort == sorting_algorithm);
+                if (ImGui::Selectable(sorting_algorithm.c_str(), is_selected)) {
+                    Config::selected_sort = sorting_algorithm;
+                }
+                if (is_selected) {
+                    ImGui::SetItemDefaultFocus();
+                }
+            }
+            ImGui::EndCombo();
+        }
 
         if (ImGui::Button("Apply", Config::button_size)) {
             Config::apply_changes = true;
@@ -44,7 +59,8 @@ void Gui::gui(sf::RenderWindow &window) {
     }
     else {
         const ImVec2 text_size = ImGui::CalcTextSize("Sorting...");
-        ImGui::SetCursorPos(ImVec2((Config::gui_window_size.x - text_size.x) * 0.5f, 60));
+        ImGui::SetCursorPos(ImVec2((Config::gui_window_size.x - text_size.x) * 0.5f,
+                                   (Config::gui_window_size.y - text_size.y) * 0.5f));
 
         static float timer = 0.0f;
         timer += ImGui::GetIO().DeltaTime;
