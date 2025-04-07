@@ -16,6 +16,7 @@ public:
     ValueSprite(const ValueSprite& value_sprite) noexcept;
     ValueSprite() = default;
     ValueSprite& operator=(float val) noexcept;
+    bool operator>(const ValueSprite& value_sprite) const noexcept;
     explicit operator float() const noexcept { return value; }
     friend void swap(ValueSprite& lhs, ValueSprite& rhs) noexcept;
 };

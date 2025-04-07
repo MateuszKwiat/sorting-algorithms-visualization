@@ -20,8 +20,9 @@ Visualization::Visualization() {
 
 void Visualization::prepare_sorting_algorithms_map() {
     sorting_algorithms_map[Config::sorting_algorithms[0]] = [&]() -> void { Sorter::bubble_sort(*vector_controller, *window); };
-    sorting_algorithms_map[Config::sorting_algorithms[1]] = [&]() -> void { Sorter::selection_sort(*vector_controller, *window); };
-    sorting_algorithms_map[Config::sorting_algorithms[2]] = [&]() -> void { Sorter::quick_sort(*vector_controller, *window); };
+    sorting_algorithms_map[Config::sorting_algorithms[1]] = [&]() -> void { Sorter::insertion_sort(*vector_controller, *window); };
+    sorting_algorithms_map[Config::sorting_algorithms[2]] = [&]() -> void { Sorter::selection_sort(*vector_controller, *window); };
+    sorting_algorithms_map[Config::sorting_algorithms[3]] = [&]() -> void { Sorter::quick_sort(*vector_controller, *window); };
 }
 
 void Visualization::run() const {

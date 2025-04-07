@@ -22,4 +22,5 @@ public:
     static void bubble_sort(ValuesVectorController& values_vector, ExtendedRenderWindow& window);
     static void quick_sort(ValuesVectorController& values_vector, ExtendedRenderWindow& window);
     static void selection_sort(ValuesVectorController& values_vector, ExtendedRenderWindow& window);
+    static void insertion_sort(ValuesVectorController& values_vector, ExtendedRenderWindow& window);
 };

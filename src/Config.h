@@ -23,7 +23,7 @@ public:
     inline static int amount = 70;
     inline static bool shuffle = false;
     inline static bool apply_changes = false;
-    inline static const std::array<std::string, 3> sorting_algorithms = {"Bubble sort", "Selection sort", "Quick sort" };
+    inline static const std::array<std::string, 4> sorting_algorithms = {"Bubble sort", "Insertion sort", "Selection sort", "Quick sort" };
     inline static std::string selected_sort = sorting_algorithms[0];
 
     // GUI
