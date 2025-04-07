@@ -16,23 +16,22 @@ void Sorter::selection_sort(ValuesVectorController &values_vector, ExtendedRende
         }
 
         for (std::size_t j = i + 1; j < n; ++j) {
+            values_vector[min_index].setFillColor(sf::Color::Red);
+            values_vector[j].setFillColor(sf::Color::Red);
+
+            if (frames_counter++ >= Config::frames_to_skip) {
+                window.update();
+                frames_counter = 0;
+            }
+
+            values_vector[j].setFillColor(sf::Color::White);
+            values_vector[min_index].setFillColor(sf::Color::White);
             if (values_vector.more_than(min_index, j)) {
                 min_index = j;
             }
         }
 
-        values_vector[min_index].setFillColor(sf::Color::Red);
-        values_vector[i].setFillColor(sf::Color::Red);
-
         values_vector.swap(i, min_index);
-
-        if (frames_counter++ >= Config::frames_to_skip) {
-            window.update();
-            frames_counter = 0;
-        }
-
-        values_vector[i].setFillColor(sf::Color::White);
-        values_vector[min_index].setFillColor(sf::Color::White);
     }
     after_sort_animation(values_vector, window);
     values_vector = true;
