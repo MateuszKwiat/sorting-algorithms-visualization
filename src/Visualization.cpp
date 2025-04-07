@@ -12,12 +12,12 @@
 #include "Config.h"
 
 Visualization::Visualization() {
+    vector_controller = std::make_unique<ValuesVectorController>();
     window = std::make_unique<ExtendedRenderWindow>(
         sf::VideoMode({Config::sfml_window_size_u.x, Config::sfml_window_size_u.y}),
-        "Sorting algorithms visualization");
+        "Sorting algorithms visualization", *vector_controller);
     window->setFramerateLimit(Config::framerate_limit);
 
-    vector_controller = std::make_unique<ValuesVectorController>();
     Gui::set_style();
 }
 
@@ -38,7 +38,7 @@ void Visualization::run() const {
         }
         else {
             window->handle_events();
-            window->update(*vector_controller);
+            window->update();
         }
     }
     ImGui::SFML::Shutdown();

@@ -15,33 +15,31 @@ void Gui::set_style() {
     style.ItemSpacing = ImVec2(10, 10);
 }
 
-
 void Gui::gui(sf::RenderWindow &window) {
-    constexpr auto button_size = ImVec2(60.f, 20.f);
     ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_Always);
     ImGui::SetNextWindowSize(Config::gui_window_size, ImGuiCond_Always);
     ImGui::Begin("Settings", nullptr, ImGuiWindowFlags_NoResize);
 
     ImGui::SetCursorPos(ImVec2(10, 30));
-    ImGui::SetNextItemWidth(200.f);
+    ImGui::SetNextItemWidth(Config::slider_width);
     ImGui::SliderInt("##Frames_to_skip", &Config::frames_to_skip, 0, Config::max_frames_to_skip, "Frames to skip: %d");
 
     if (!Config::sort) {
         ImGui::SetCursorPos(ImVec2(10, 60));
-        ImGui::SetNextItemWidth(200.f);
+        ImGui::SetNextItemWidth(Config::slider_width);
         ImGui::SliderInt("##Amount_of_values", &Config::amount, 2, static_cast<int>(Config::sfml_window_size_u.x),
                          "Amount of values: %d");
 
-        if (ImGui::Button("Sort", button_size)) {
-            Config::sort = true;
+        if (ImGui::Button("Apply", Config::button_size)) {
+            Config::apply_changes = true;
         }
         ImGui::SameLine();
-        if (ImGui::Button("Shuffle", button_size)) {
+        if (ImGui::Button("Shuffle", Config::button_size)) {
             Config::shuffle = true;
         }
         ImGui::SameLine();
-        if (ImGui::Button("Apply", button_size)) {
-            Config::apply_changes = true;
+        if (ImGui::Button("Sort", Config::button_size)) {
+            Config::sort = true;
         }
     }
     else {

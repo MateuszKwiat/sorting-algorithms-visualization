@@ -12,13 +12,15 @@
 
 class ExtendedRenderWindow final : public sf::RenderWindow {
 private:
+    ValuesVectorController& controller;
+
     void draw(const ValueSprite & sprite);
-    void draw(const ValuesVectorController & controller);
+    void draw();
 
 public:
     using sf::RenderWindow::draw;
-    ExtendedRenderWindow(sf::VideoMode video_mode, const char * str);
-    ExtendedRenderWindow() = default;
+    ExtendedRenderWindow(sf::VideoMode video_mode, const char * str, ValuesVectorController& controller);
+    ExtendedRenderWindow() = delete;
     void handle_events();
-    void update(const ValuesVectorController & controller);
+    void update();
 };

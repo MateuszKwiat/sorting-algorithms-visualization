@@ -4,15 +4,13 @@
 
 #include "Sorter.h"
 
-#include <iostream>
-
 void Sorter::update_color(const ValuesVectorController& values_vector, ValueSprite &value_sprite, ExtendedRenderWindow &window, const sf::Color &color) {
     value_sprite.setFillColor(sf::Color::Green);
     window.handle_events();
     if (!window.isOpen()) {
         return;
     }
-    window.update(values_vector);
+    window.update();
 }
 
 void Sorter::after_sort_animation(ValuesVectorController &values_vector, ExtendedRenderWindow &window) {
@@ -46,7 +44,7 @@ void Sorter::bubble_sort(ValuesVectorController &values_vector, ExtendedRenderWi
                 swapped = true;
             }
             if (frames_counter++ >= Config::frames_to_skip) {
-                window.update(values_vector);
+                window.update();
                 frames_counter = 0;
             }
 
