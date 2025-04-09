@@ -35,8 +35,7 @@ int Sorter::partition(ValuesVectorController& values_vector, const int low, cons
 
 void Sorter::quick_sort(ValuesVectorController& values_vector, const int low, const int high, ExtendedRenderWindow& window) {
     if (low < high) {
-        const int pivot_index = partition(values_vector, low, high, window);
-        if (pivot_index != -1) {
+        if (const int pivot_index = partition(values_vector, low, high, window); pivot_index != -1) {
             quick_sort(values_vector, low, pivot_index - 1, window);
             quick_sort(values_vector, pivot_index + 1, high, window);
         }

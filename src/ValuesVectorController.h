@@ -9,7 +9,6 @@
 
 #include "ValueSprite.h"
 
-
 class ValuesVectorController : private std::vector<ValueSprite> {
 private:
     std::random_device rd;
@@ -27,6 +26,7 @@ private:
     void update_sprites_position_and_size();
     ValueSprite& prepare_value_sprite(ValueSprite& value_sprite);
     std::vector<ValueSprite>& get_vector() { return *this; }
+
 public:
     ValuesVectorController();
     ~ValuesVectorController() = default;

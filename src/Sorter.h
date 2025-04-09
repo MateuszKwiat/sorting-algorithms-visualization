@@ -3,11 +3,9 @@
 //
 
 #pragma once
-#include <vector>
 
 #include "ValuesVectorController.h"
 #include "ExtendedRenderWindow.h"
-
 
 class Sorter {
 private:

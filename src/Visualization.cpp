@@ -26,8 +26,7 @@ void Visualization::prepare_sorting_algorithms_map() {
 }
 
 void Visualization::run() const {
-    while (window->isOpen())
-    {
+    while (window->isOpen()) {
         if (Config::sort) {
             if (auto map_iterator = sorting_algorithms_map.find(Config::selected_sort);
                 map_iterator != sorting_algorithms_map.end()) {
