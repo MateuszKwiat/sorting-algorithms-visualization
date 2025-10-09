@@ -1,3 +1,6 @@
 Cmake-build-debug
 .DS_Store
 .idea
+imgui.ini
+build/
+.obsidian/
