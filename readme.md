@@ -11,4 +11,23 @@ A C++20 desktop application that visualizes various sorting algorithms in real t
 - Real-time bars and animations
 - Simple and responsive ImGui interface
 - Cross-platform (Windows, Linux, macOS)
-  
+
+## 🧱 Technologies
+- Language: C++20
+- Libraries:
+  - SFML
+  - ImGui
+  - imgui-sfml
+- Build system: CMake
+
+## 🛠️ Building
+**Prerequisites**
+Make sure you have:
+- CMake $geq$ 4.0.2
+- C++20 - compatible compiler
+- Git
+
+### Clone & build
+```bash
+cmake -B build -S .
+```
