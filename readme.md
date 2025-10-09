@@ -46,5 +46,12 @@ cmake --build build
 ./build/bin/sorting_algorithms_visualization
 ```
 
+ **Linux Users:** Before building, make sure the following packages are installed:
+ 
+ ```bash
+ sudo apt update
+ sudo apt install build-essential cmake libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev libfreetype6-dev libopenal-dev libvorbis-dev libflac-dev
+ ```
+
 ## 📜 License
 This project is licensed under the [MIT License](LICENSE.txt).
