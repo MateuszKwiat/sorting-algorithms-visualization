@@ -29,10 +29,10 @@ A C++20 desktop application that visualizes various sorting algorithms in real t
 Make sure you have:
 - CMake $\geq$ 4.0.2
 - C++20 - compatible compiler
-- Git
+- Git  
 All libraries are fetched automatically via cmake `FetchContent`
 
-### Linux and macOS
+### Linux & macOS
 #### Clone & build
 ```bash
 git clone https://github.com/MateuszKwiat/sorting-algorithms-visualization.git
@@ -52,6 +52,20 @@ cmake --build build
  sudo apt update
  sudo apt install build-essential cmake libx11-dev libxrandr-dev libxcursor-dev libxi-dev libudev-dev libgl1-mesa-dev libfreetype6-dev libopenal-dev libvorbis-dev libflac-dev
  ```
+
+### Windows (Visual Studio)
+#### Clone & build
+```powershell
+git clone https://github.com/MateuszKwiat/sorting-algorithms-visualization.git
+cd sorting_algorithms_visualization
+cmake -B build -S . -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release
+```
+
+#### Run
+```powershell
+build\bin\Release\sorting_algorithms_visualization.exe
+```
 
 ## 📜 License
 This project is licensed under the [MIT License](LICENSE.txt).
