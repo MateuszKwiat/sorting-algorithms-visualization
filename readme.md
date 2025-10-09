@@ -53,3 +53,6 @@ Mateusz Kwiatkowski
 📚 Systems Engineering (Data Engineering) student at Wrocław University of Science and Technology  
 🔗 GitHub Profile  
 🔗 Linkedin Profile  
+
+## 📜 License
+This project is licnesed under the [MIT License](LICENSE.txt).
