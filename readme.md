@@ -1,5 +1,9 @@
-# Sorting Algorithms Visualization
+<h1 align="center">Sorting Algorithms Visualization</h1>
 A C++20 desktop application that visualizes various sorting algorithms in real time. Built using SFML, ImGui, and imgui-sfml, the project offers an interactive way to explore how different sorting techniques operate step-by-step.
+
+<p align="center">
+  <img src="assets/demo.gif" alt="Sorting visualization demo"/>
+</p>
 
 ## ✨ Features
 - Visualization of common sorting algorithms:
