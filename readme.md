@@ -5,7 +5,7 @@ A C++20 desktop application that visualizes various sorting algorithms in real t
   <img src="assets/demo.gif" alt="Sorting visualization demo"/>
 </p>
 
-## ✨ Features
+## Features
 - Visualization of common sorting algorithms:
   - Bubble Sort
   - Insertion Sort
@@ -16,7 +16,7 @@ A C++20 desktop application that visualizes various sorting algorithms in real t
 - Simple and responsive ImGui interface
 - Cross-platform (Windows, Linux, macOS)
 
-## 🧱 Technologies
+##  Technologies
 - Language: C++20
 - Libraries:
   - [SFML](https://github.com/SFML/SFML)
@@ -24,7 +24,7 @@ A C++20 desktop application that visualizes various sorting algorithms in real t
   - [imgui-sfml](https://github.com/SFML/imgui-sfml)
 - Build system: CMake
 
-## 🛠️ Building
+##  Building
 ### Prerequisites
 Make sure you have:
 - CMake $\geq$ 4.0.2
@@ -45,14 +45,5 @@ cmake --build build
 ./build/bin/sorting_algorithms_visualization
 ```
 
-## 🚀 Future Plans
-- Add more algorithms
-
-## 🧑‍💻 Author
-Mateusz Kwiatkowski  
-📚 Systems Engineering (Data Engineering) student at Wrocław University of Science and Technology  
-🔗 GitHub Profile  
-🔗 Linkedin Profile  
-
 ## 📜 License
-This project is licnesed under the [MIT License](LICENSE.txt).
+This project is licensed under the [MIT License](LICENSE.txt).
