@@ -32,7 +32,8 @@ Make sure you have:
 - Git
 All libraries are fetched automatically via cmake `FetchContent`
 
-### Clone & build
+### Linux and macOS
+#### Clone & build
 ```bash
 git clone https://github.com/MateuszKwiat/sorting-algorithms-visualization.git
 cd sorting_algorithms_visualization/
@@ -40,7 +41,7 @@ cmake -B build -S .
 cmake --build build
 ```
 
-### Run
+#### Run
 ```bash
 ./build/bin/sorting_algorithms_visualization
 ```
