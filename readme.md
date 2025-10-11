@@ -36,7 +36,7 @@ All libraries are fetched automatically via cmake `FetchContent`
 #### Clone & build
 ```bash
 git clone https://github.com/MateuszKwiat/sorting-algorithms-visualization.git
-cd sorting_algorithms_visualization/
+cd sorting-algorithms-visualization/
 cmake -B build -S .
 cmake --build build
 ```
@@ -57,7 +57,7 @@ cmake --build build
 #### Clone & build
 ```powershell
 git clone https://github.com/MateuszKwiat/sorting-algorithms-visualization.git
-cd sorting_algorithms_visualization
+cd sorting-algorithms-visualization
 cmake -B build -S . -G "Visual Studio 17 2022" -A x64
 cmake --build build --config Release
 ```
