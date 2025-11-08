@@ -67,5 +67,5 @@ cmake --build build --config Release
 build\bin\Release\sorting_algorithms_visualization.exe
 ```
 
-## 📜 License
+## License
 This project is licensed under the [MIT License](LICENSE.txt).
